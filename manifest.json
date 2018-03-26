@@ -1,0 +1,30 @@
+{
+"manifest_version": 2,
+"name": "神大国文卒業できるかなチェッカー（2015年度入学者向け）",
+"version": "1.0.0",
+"description": "神大の国文生（2015年度入学者）が卒業単位を取得できているか確認できるChrome拡張機能です。",
+"icons" : {
+    "128": "icon.png"
+  },
+"content_scripts": [
+    {
+        "matches" : ["https://kym-web.ofc.kobe-u.ac.jp/campusweb/campusportal.do?page=main&tabId=si"],
+        "js" : ["jQuery.js","graduate.js"]
+    },
+    {
+        "matches" : ["https://kym-web.ofc.kobe-u.ac.jp/campusweb/campusportal.do?page=main"],
+        "js" : ["jQuery.js","graduate.js"]
+    },
+    {
+        "matches" : ["https://kym-web.ofc.kobe-u.ac.jp/campusweb/campusportal.do?page=main&tabId=home"],
+        "js" : ["jQuery.js","graduate.js"]
+    }
+],
+  "browser_action": {
+      "default_title": "うりぼーネットへ"
+  },
+  "background": {
+    "scripts": [ "background.js" ],
+    "persistent": false
+  }
+}
