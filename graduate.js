@@ -143,7 +143,7 @@ function senmon(c,sub,num,cre){
         if(num[nums].indexOf("C") == 0 && num[nums].indexOf("000") == -1){
             gakubu_sentaku += parseFloat(cre[nums]);
             //所属コース開講科目の検索
-            if(num[nums].lastindexOf(course_flag) == 3){
+            if(num[nums].lastIndexOf(course_flag) == 3){
                 senmon_kougi += parseFloat(cre[nums]);
             }
         }else if(num[nums] == "" && sub[nums].indexOf("専門演習") > -1){
