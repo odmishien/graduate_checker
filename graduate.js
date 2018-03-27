@@ -131,9 +131,9 @@ function senmon(c,sub,num,cre){
             senmon_enshu_B_2 += parseFloat(cre[subj]);
         }else if(sub[subj] == "専門演習Ｂ(3)（"+ course_name + "）"){
             senmon_enshu_B_3 += parseFloat(cre[subj]);
-        }else if(sub[subj] == "卒論演習"){
+        }else if(sub[subj] == "卒論演習（"+ course_name + "）"){
             sotsuronenshu += parseFloat(cre[subj]);
-        }else if(sub[subj] == "卒論研究"){
+        }else if(sub[subj] == "卒論研究（"+ course_name + "）"){
             sotsuronkenkyu += parseFloat(cre[subj]);
         }
     }
@@ -143,7 +143,7 @@ function senmon(c,sub,num,cre){
         if(num[nums].indexOf("C") == 0 && num[nums].indexOf("000") == -1){
             gakubu_sentaku += parseFloat(cre[nums]);
             //所属コース開講科目の検索
-            if(num[nums].indexOf(course_flag) == 3){
+            if(num[nums].lastindexOf(course_flag) == 3){
                 senmon_kougi += parseFloat(cre[nums]);
             }
         }else if(num[nums] == "" && sub[nums].indexOf("専門演習") > -1){
@@ -228,8 +228,9 @@ function senmon(c,sub,num,cre){
         gakubu_sentaku -= senmon_kougi;
     }
 
-    if(gakubu_sentaku > 50.0){
-        free_sentaku = gakubu_sentaku - 50.0;
+    if(gakubu_sentaku >= 50.0){
+        gakubu_sentaku = 50.0
+        free_sentaku += gakubu_sentaku - 50.0;
     }
     credits.splice(0,0,kisozemi,senmon_1,senmon_2,zyohogairon,zyohoenshu,sotsuronenshu,sotsuronkenkyu,gairon,senmon_kougi,senmon_enshu_A,senmon_enshu_B_1,senmon_enshu_B_2,senmon_enshu_B_3,gai_enshu,gakubu_sentaku,free_sentaku);
     return credits;
