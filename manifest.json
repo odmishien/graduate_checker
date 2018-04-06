@@ -1,7 +1,7 @@
 {
 "manifest_version": 2,
 "name": "神大国文卒業できるかなチェッカー（2015年度入学者向け）",
-"version": "1.0.6",
+"version": "1.0.7",
 "description": "神大の国文生（2015年度入学者）が卒業単位を取得できているか確認できるChrome拡張機能です。",
 "icons" : {
     "128": "icon.png"
