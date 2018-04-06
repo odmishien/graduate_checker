@@ -229,8 +229,8 @@ function senmon(c,sub,num,cre){
     }
 
     if(gakubu_sentaku >= 50.0){
-        free_sentaku += gakubu_sentaku - 50.0;
-        gakubu_sentaku = 50.0
+        var Promise = $.when(free_sentaku += (gakubu_sentaku - 50.0));
+        Promise.done(gakubu_sentaku = 50.0);
     }
     credits.splice(0,0,kisozemi,senmon_1,senmon_2,zyohogairon,zyohoenshu,sotsuronenshu,sotsuronkenkyu,gairon,senmon_kougi,senmon_enshu_A,senmon_enshu_B_1,senmon_enshu_B_2,senmon_enshu_B_3,gai_enshu,gakubu_sentaku,free_sentaku);
     return credits;
