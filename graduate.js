@@ -90,12 +90,17 @@ function zengaku_kyotsu(category,d,c,sub,cre){
     return credits;
 }
 
-function senmon(c,sub,num,cre){
+function senmon(category,d,c,sub,num,cre){
     var credits = [];
     var courses = course(c);
     var course_name = courses[0];
     var course_flag = courses[1];
-    
+    var zyohogairon = 0;
+    var zyohoenshu = 0;
+    var kisozemi = 0;
+    var senmon_1 = 0;
+    var senmon_2 = 0;
+
     var gai_enshu = 0;
     var gairon = 0;
     var sotsuronenshu = 0;
@@ -110,15 +115,15 @@ function senmon(c,sub,num,cre){
 
     for (var subj in sub){
         if(sub[subj] == "情報科学概論"){
-            var zyohogairon = parseFloat(cre[subj]);
+            zyohogairon += parseFloat(cre[subj]);
         }else if(sub[subj] == "情報科学演習I"){
-            var zyohoenshu = parseFloat(cre[subj]);
+            zyohoenshu += parseFloat(cre[subj]);
         }else if(sub[subj] == "基礎ゼミ"){
-            var kisozemi = parseFloat(cre[subj]);
+            kisozemi += parseFloat(cre[subj]);
         }else if(sub[subj] == "専門基礎英語（文章表現、会話）I"){
-            var senmon_1 = parseFloat(cre[subj]);
+            senmon_1 += parseFloat(cre[subj]);
         }else if(sub[subj] == "専門基礎英語（文章表現、会話）II"){
-            var senmon_2 = parseFloat(cre[subj]);
+            senmon_2 += parseFloat(cre[subj]);
         }else if(sub[subj] == "外国語演習" || sub[subj] == "外国語演習（グローバル専門科目）"){
             gai_enshu += parseFloat(cre[subj]);
         }else if(sub[subj] == "情報コミュニケーション概論" ||sub[subj] == "現代文化概論" ||sub[subj] == "異文化コミュニケーション概論" ||sub[subj] == "地域文化概論"){
@@ -150,6 +155,10 @@ function senmon(c,sub,num,cre){
            gakubu_sentaku += parseFloat(cre[nums]); 
         }else if(num[nums] == "" && sub[nums].indexOf("外国語演習") > -1){
             gakubu_sentaku += parseFloat(cre[nums]);
+        }else if(num[nums] == "" && category[nums].indexOf("専門科目") > -1){
+            if(d[nums].indexOf("選択科目") > -1){
+                gakubu_sentaku += parseFloat(cre[nums]);
+            }
         }
     }
     
@@ -257,7 +266,7 @@ $("#main-frame-if").on('load', function () {
             credit.push(row.cells[6].innerText);
             }
         var zengaku_cre = zengaku_kyotsu(category,d_category,c_category,subject,credit)
-        var senmon_cre = senmon(course,subject,number,credit);
+        var senmon_cre = senmon(category,d_category,course,subject,number,credit);
         console.log(zengaku_cre);
         console.log(senmon_cre);
         var free = zengaku_cre[5] + senmon_cre[15]
