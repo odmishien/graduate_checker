@@ -136,9 +136,9 @@ function senmon(category,d,c,sub,num,cre){
             senmon_enshu_B_2 += parseFloat(cre[subj]);
         }else if(sub[subj] == "専門演習Ｂ(3)（"+ course_name + "）"){
             senmon_enshu_B_3 += parseFloat(cre[subj]);
-        }else if(sub[subj] == "卒論演習（"+ course_name + "）"){
+        }else if(sub[subj] == "卒論演習"){
             sotsuronenshu += parseFloat(cre[subj]);
-        }else if(sub[subj] == "卒論研究（"+ course_name + "）"){
+        }else if(sub[subj] == "卒業研究"){
             sotsuronkenkyu += parseFloat(cre[subj]);
         }
     }
